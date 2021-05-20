@@ -1,0 +1,72 @@
+<form [formGroup]="form" (ngSubmit)="saveProduct($event)">
+  <mat-card>
+    <mat-card-title>Producto</mat-card-title>
+    <mat-card-content>
+      <div class="row">
+        <div class="col-xs">
+          <mat-form-field>
+            <input
+              placeholder="Id"
+              matInput
+              formControlName="id"
+              type="string"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs">
+          <mat-form-field>
+            <input
+              matInput
+              placeholder="Title"
+              formControlName="title"
+              type="text"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs">
+          <mat-form-field>
+            <input
+              matInput
+              placeholder="Price"
+              formControlName="price"
+              type="number"
+            />
+          </mat-form-field>
+          <div *ngIf="priceField!.errors && form.get('price')!.dirty">
+            <p *ngIf="priceField!.hasError('price_invalid')">
+              Este no es valido
+            </p>
+            <p *ngIf="priceField!.hasError('required')">Este no es valido</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs">
+          <mat-form-field>
+            <input
+              matInput
+              placeholder="Description"
+              formControlName="description"
+              type="text"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs">
+          <img *ngIf="image$ | async" [src]="image$ | async" alt="" />
+          <input type="file" (change)="uploadFile($event)" />
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button [disabled]="form.invalid" mat-raised-button type="submit">
+        Guardar
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</form>
