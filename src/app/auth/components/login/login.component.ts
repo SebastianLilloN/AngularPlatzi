@@ -42,4 +42,11 @@ export class LoginComponent implements OnInit {
       password: ['', [Validators.required]],
     });
   }
+  loginApi() {
+    this.authService
+      .loginRestApi('nicolas@nicola.com', '123456')
+      .subscribe((data) => {
+        console.log(data);
+      });
+  }
 }

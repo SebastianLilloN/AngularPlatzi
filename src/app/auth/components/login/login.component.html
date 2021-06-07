@@ -33,6 +33,14 @@
       <button [disabled]="form.invalid" mat-raised-button type="submit">
         Ingresar
       </button>
+      <button
+        [disabled]="form.invalid"
+        mat-raised-button
+        type="button"
+        (click)="loginApi()"
+      >
+        Login API
+      </button>
     </mat-card-actions>
   </mat-card>
 </form>
